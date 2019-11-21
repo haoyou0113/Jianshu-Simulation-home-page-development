@@ -1,0 +1,33 @@
+@font-face {
+  font-family: "iconfont";
+  src: url('iconfont.eot?t=1574128105366');
+  /* IE9 */
+  src: url('iconfont.eot?t=1574128105366#iefix') format('embedded-opentype'),
+    /* IE6-IE8 */
+    url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAPMAAsAAAAAB+wAAAN+AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDHAqDKIMHATYCJAMQCwoABCAFhG0HRhv3BhHVm/vIfg647fCoTddmJylVpAzWKGXUGXTRy8zMG8HX3lq/mbe7c/MvZHWkEMqjDp+CcBSaQoGxCIWDMxZhsl69R3lVJb0S9SNOyBzA53pzzd7cOmMi1BO5sUf/kDxwmlEA/M/l9FqWwPyW5TLHeH4YYDS2BjbWpEACLmCJvWHsgpZ4mEC3mxzsoYWdGzTJHBWId9GRwdAyGtmQH5owrliYc/EFyLXyCb8Dyufg+/EfvKCiGFXmxEcvzMPg7i+xLxqo6KaIn4cAdzoT2DIqTgJJvKq0PFGjyElIV7uny0DTFKZqk/+icXODeEeRNOsvj1AVYszMnQcXUbTyS8yhE/yS51RJNWCOAh9kQcOAD/jGJG5525TqwmQytLYx0M0vva85kUrzCs2cXcUIIssNo3lMCzeiWIIm0t1Tz8OweFvz8KnwECPNNp0bTSytt0+HAE0fl1fwOm0tQI++Q1NzDyv29CwONtdzX5uCoq+0tfsY9pQgPEgkz6dP3Z88CbBFbiEr/VMIIruGw6OjeHaS3b29u6uNTUXUWuwkXF7VTEXFTFHDo04MM/XzFXEVbxZWVRVuHhn1GmA36tneXlmwt/uzsPAHfz9iZG5OFg07EZYPpcwehjPcFEcixsDRHTcJiTYgkV0YpKYdaili5PcUEqU9oun9aW2NdD4FeKbd5ma/4BH/Ly4A93Pa0dEhareYHtNVtCXJbfk5+OgoDoU5mAU1+Ahmoqs5PtLQfzyfdnOJFFVdTD2Ug8+KIAnMVuspsg7IN2gHQewveoH0/uMgp77b2AQy6k2pds9R8vOs+47cs9WEYdyfwe3M/WvWFPWEfI1vajMVriM90N0nnb3xcQVdxww6Vr2ZQrah5hKajQSKiV1QNQcxSTgJI4OLMNbcge4Ey+WDNSmqyDkcVw4gLFuEYtEPqJbdxSThNYxs+g1jy4Gg2w7WDQeH/Wi1KWMuWEHxh7acJ7L1osP8G9bvIec0PyC9kE3rB9dy8vErTshTTDGf2hMhIJ5HuIDjcBhmWHjusBSrEVky26aqF1nlPCrNlDEXrEDxB205T+QVF134/A3r95BzA6rK+EI2befAZXE6YK6SqRPqVp4xn9ojQoB4HsEFmHCwIjNYqvt1WIqlGRBaMjYqRF0l1vKy8Q3XQGf2yihRI2OE9tp3NCiO68ebfb61z+uppRZZKQAA') format('woff2'),
+    url('iconfont.woff?t=1574128105366') format('woff'),
+    url('iconfont.ttf?t=1574128105366') format('truetype'),
+    /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+    url('iconfont.svg?t=1574128105366#iconfont') format('svg');
+  /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-iconset0137:before {
+  content: "\e624";
+}
+
+.icon-Aa:before {
+  content: "\e636";
+}
+
+.icon-Magnifier:before {
+  content: "\e62d";
+}

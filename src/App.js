@@ -1,25 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { GlobalStyle } from './style.js';
+import React, { Fragment } from 'react';
+import Header from './common/header';
+import store from './store';
+import { Provider } from 'react-redux';
+// import GlobalStyleFont from './statics/iconfont/iconfont.js';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Fragment>
+      <GlobalStyle />
+      <Provider store={store}>
+        <Header />
+      </Provider>
+
+      <div>hello</div>
+    </Fragment>
   );
 }
 
