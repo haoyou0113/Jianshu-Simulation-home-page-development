@@ -1,17 +1,18 @@
 import * as constants from './constants';
-
-const defaultState = { focused: false };
+import { fromJS } from 'immutable';
+// 转化对象
+const defaultState = fromJS({ focused: false, list: [] });
 
 export default (state = defaultState, action) => {
-  if (action.type === constants.SEARCH_FOCUS) {
-    return {
-      focused: true
-    };
+  switch (action.type) {
+    case constants.SEARCH_FOCUS:
+      return state.set('focused', true);
+    // 结合之前的对象返回新的对象 类似return newstate
+    case constants.SEARCH_BLUR:
+      return state.set('focused', false);
+    case constants.CHANGE_LIST:
+      return state.set('list', action.data);
+    default:
+      return state;
   }
-  if (action.type === constants.SEARCH_BLUR) {
-    return {
-      focused: false
-    };
-  }
-  return state;
 };
