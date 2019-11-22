@@ -21,24 +21,60 @@ import { actionCreators } from './store';
 
 class Header extends Component {
   getListArea = () => {
-    const { focused, list } = this.props;
-    if (focused) {
+    const {
+      focused,
+      list,
+      page,
+      handleMouseEnter,
+      handleMouseLeave,
+      mouseIn,
+      handleChangePage,
+      totalPage
+    } = this.props;
+    const newList = list.toJS();
+    //将immutable list 转化为普通list
+    const pageList = [];
+    if (newList.length) {
+      for (let i = (page - 1) * 10; i < page * 10; i++) {
+        pageList.push(
+          <SearchInfoItem key={newList[i]}>{newList[i]}</SearchInfoItem>
+        );
+      }
+    }
+    // 在获取数据之后再进行循环 key才可以获得数据
+
+    if (focused || mouseIn) {
       return (
-        <SearchInfo>
+        <SearchInfo
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
           <SearchInfoTitle>
-            热门搜索<SearchInfoSwitch>换一批</SearchInfoSwitch>
+            热门搜索
+            <SearchInfoSwitch
+              onClick={() => handleChangePage(page, totalPage, this.spinIcon)}
+            >
+              <i
+                ref={icon => {
+                  {
+                    /* 获取真实的DOM节点 */
+                  }
+                  this.spinIcon = icon;
+                }}
+                className='iconfont spin'
+              >
+                &#xe851;
+              </i>
+              换一批
+            </SearchInfoSwitch>
           </SearchInfoTitle>
-          <SearchInfoList>
-            {list.map(item => {
-              return <SearchInfoItem key={item}>{item}</SearchInfoItem>;
-            })}
-          </SearchInfoList>
+          <SearchInfoList>{pageList}</SearchInfoList>
         </SearchInfo>
       );
     }
   };
   render() {
-    const { focused, handleInputFocus, handleInputBlur } = this.props;
+    const { focused, handleInputFocus, handleInputBlur, list } = this.props;
     return (
       <HeaderWrapper>
         <Logo />
@@ -53,7 +89,9 @@ class Header extends Component {
             <CSSTransition classNames='slide' timeout={200} in={focused}>
               <NavSearch
                 className={focused ? 'focused' : ''}
-                onFocus={handleInputFocus}
+                onFocus={() => {
+                  handleInputFocus(list);
+                }}
                 onBlur={handleInputBlur}
               ></NavSearch>
             </CSSTransition>
@@ -78,20 +116,54 @@ class Header extends Component {
 const mapStateToProps = state => {
   return {
     focused: state.getIn(['header', 'focused']),
-    list: state.getIn(['header', 'list'])
+    list: state.getIn(['header', 'list']),
+    page: state.getIn(['header', 'page']),
+    mouseIn: state.getIn(['header', 'mouseIn']),
+    totalPage: state.getIn(['header', 'totalPage'])
   };
   // 获取数据
 };
 
 const mapDispathToProps = dispatch => {
   return {
-    handleInputFocus() {
-      dispatch(actionCreators.getList());
-      dispatch(actionCreators.searchFocus());
+    handleMouseEnter() {
+      dispatch(actionCreators.changeMouse());
+    },
+    handleMouseLeave() {
+      dispatch(actionCreators.changeLeave());
+    },
+    handleInputFocus(list) {
+      console.log(list);
+      if (list.size === 0) {
+        dispatch(actionCreators.getList());
+        dispatch(actionCreators.searchFocus());
+      }
+      // 减少ajax请求次数 减少无意义请求
     },
 
     handleInputBlur() {
       dispatch(actionCreators.searchBlur());
+    },
+    handleChangePage(page, totalPage, spin) {
+      let originAngle = spin.style.transform.replace(/[^0-9]/gi, '');
+      // 获取原始角度值 截取字符串'rotate(360deg)'中的角度 替换为空
+
+      if (originAngle) {
+        originAngle = parseInt(originAngle, 10);
+        spin.style.transform = 'rotate(0deg)';
+      } else {
+        originAngle = 0;
+      }
+      spin.style.transform = `rotate(${originAngle + 360}deg)`;
+      console.log(originAngle);
+
+      if (page < totalPage) {
+        dispatch(actionCreators.changePage(page + 1));
+      } else {
+        dispatch(actionCreators.changePage(1));
+      }
+
+      // 需要知道当前页码和总页码 根据判断修改页码 传递给actionCreator
     }
   };
 };
