@@ -136,12 +136,13 @@ const mapDispathToProps = dispatch => {
       console.log(list);
       if (list.size === 0) {
         dispatch(actionCreators.getList());
-        dispatch(actionCreators.searchFocus());
       }
+      dispatch(actionCreators.searchFocus());
       // 减少ajax请求次数 减少无意义请求
     },
 
     handleInputBlur() {
+      console.log(2);
       dispatch(actionCreators.searchBlur());
     },
     handleChangePage(page, totalPage, spin) {
