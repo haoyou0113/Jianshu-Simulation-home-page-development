@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import Header from './common/header';
 import store from './store';
 import { Provider } from 'react-redux';
@@ -9,17 +9,16 @@ import Detail from './pages/detail';
 
 function App() {
   return (
-    <Fragment>
-      <Provider store={store}>
-        <Header />
-        <BrowserRouter>
-          <div>
-            <Route path='/' exact component={Home}></Route>
-            <Route path='/detail' exact component={Detail}></Route>
-          </div>
-        </BrowserRouter>
-      </Provider>
-    </Fragment>
+    <Provider store={store}>
+      <BrowserRouter>
+        <div>
+          {' '}
+          <Header />
+          <Route path='/' exact component={Home}></Route>
+          <Route path='/detail' exact component={Detail}></Route>
+        </div>
+      </BrowserRouter>
+    </Provider>
   );
 }
 

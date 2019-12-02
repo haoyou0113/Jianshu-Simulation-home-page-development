@@ -1,11 +1,13 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { TopicWrapper, TopicItem } from '../style';
 import { connect } from 'react-redux';
-class Topic extends Component {
+class Topic extends PureComponent {
   render() {
+    const { list } = this.props;
+    console.log(list);
     return (
       <TopicWrapper>
-        {this.props.list.map(item => {
+        {list.map(item => {
           return (
             <TopicItem key={item.get('id')}>
               <img className='topic-pic' src={item.get('imgUrl')} alt='' />
@@ -19,7 +21,7 @@ class Topic extends Component {
 }
 
 const mapState = state => ({
-  list: state.get('home').get('topicList')
+  list: state.getIn(['home', 'topicList'])
 });
 // 从map中拿数据
 
