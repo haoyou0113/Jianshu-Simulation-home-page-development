@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { DetailWrapper, Header, Content } from './style';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import * as actionCreators from './store/actionCreators';
 
 class Detail extends PureComponent {
@@ -34,4 +35,5 @@ const mapDispatchToProps = dispatch => {
     }
   };
 };
-export default connect(mapStateToProps, mapDispatchToProps)(Detail);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Detail));
+// withRouter 使得detail获得router中的所有内容 配合loadable
